@@ -3,6 +3,10 @@ const express = require( 'express' )
 const hbs     = require( 'hbs' )
 const app     = express()
 
+/*Files /Weather*/
+const geoCode = require( './utils/geocode' );
+const forecast = require( './utils/forecast' );
+
 /*Define paths for express config*/
 const publicDirectoryPath = path.join( __dirname , '../public' )
 const viewsPath           = path.join( __dirname ,  '../templates/views' )
@@ -59,12 +63,29 @@ app.get( '/weather' , ( req , res ) => {
             error : 'You must provide an address'
         })
     }
-    console.log( req.query.address );
-    res.send({
-        /*latitude  : 45.56,
-        longitude : -12.6,*/
-        address  : req.query.address
-    })
+    const address = req.query.address;
+    let temperature = '';
+    let feelslike = '';
+    let weather_descriptions = '';
+    let ubic = '';
+
+    if( address ) {
+        geoCode( address , ( error , { latitude , longitude , location } = {} ) => {
+            if ( error ) { 
+                return res.send( { error } )
+            }
+            forecast( longitude , latitude , ( error , dataForeCast ) => {
+                if ( error ) { 
+                    return res.send( { error } )
+                }
+                return res.send({
+                    forecast : dataForeCast,
+                    location,
+                    address : req.query.address
+                })
+            })
+        })
+    }
 })
 
 app.get( '/help/*', ( req , res ) => {
