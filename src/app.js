@@ -39,11 +39,31 @@ app.get( '/help', ( req , res ) => {
     })
 })
 
-app.get( '/weather' , ( request , response ) => {
-    response.send({
-        latitude  : 45.56,
-        longitude : -12.6,
-        location  : 'New york'
+/*http://localhost:3000/products?search=games&rating=5*/
+app.get( '/products' , ( req, res ) => {
+    if( !req.query.search ) {
+        return res.send({
+            error : 'You must provide a search term'
+        })
+    }
+    console.log( req.query );
+    res.send({
+        products : []
+    })
+})
+
+/*http://localhost:3000/weather?address=philadelphia*/
+app.get( '/weather' , ( req , res ) => {
+    if( !req.query.address ) {
+        return res.send({
+            error : 'You must provide an address'
+        })
+    }
+    console.log( req.query.address );
+    res.send({
+        /*latitude  : 45.56,
+        longitude : -12.6,*/
+        address  : req.query.address
     })
 })
 
