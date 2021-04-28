@@ -64,10 +64,6 @@ app.get( '/weather' , ( req , res ) => {
         })
     }
     const address = req.query.address;
-    let temperature = '';
-    let feelslike = '';
-    let weather_descriptions = '';
-    let ubic = '';
 
     if( address ) {
         geoCode( address , ( error , { latitude , longitude , location } = {} ) => {
