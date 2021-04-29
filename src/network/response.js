@@ -1,31 +1,54 @@
-const statusMessage = {
-    '200': 'done',
+/*LIBS*/
+const chalk = require( 'chalk' )
+
+const Message = {
+    '200': 'Done',
     '201': 'Created',
     '400': 'Invalid format',
     '500': 'Internal error'
 }
 
-exports.success = ( res , message , status , data ) => {
-    let statusCode    = status;
-    let statusMessage = message;
-    
-    if ( !status ) {
+/*RENDER*/
+exports.success = ( res , view , message , statusCode , data ) => {
+    if ( !statusCode ) {
         status = 200;
     }
     if ( !message ) {
-        statusMessage = statusMessage[ status ];
+        message = Message[ '200' ];
     }
-    res.status( statusCode ).send({
+    res.status( statusCode ).render( view , {
         error : '',
-        body  :  statusMessage,
+        body  :  message,
         data 
     })
 }
 
-exports.error = ( res , view , error , status , data , details) => {
-    console.error( '[response error] ' + details );
-    res.status( status ).render( view ,{
+exports.error = ( res , view , error , statusCode , data , details ) => {
+    console.error( chalk.red('[response error] ' + details) );
+    res.status( statusCode ).render( view , {
         error,
         data
+    })
+}
+
+/*SEND*/
+exports.successRes = ( res , message , statusCode , data ) => {
+    if ( !statusCode ) {
+        status = 200;
+    }
+    if ( !message ) {
+        message = Message[ '200' ];
+    }
+    res.status( statusCode ).send({
+        error : '',
+        body  :  message,
+        data 
+    })
+}
+
+exports.errorRes = ( res , error , statusCode, details ) => {
+    console.error( chalk.red('[response error] ' + details) );
+    res.status( statusCode ).send({
+        error
     })
 }

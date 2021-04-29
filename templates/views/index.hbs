@@ -12,11 +12,11 @@
 <body>
     {{>header}} <!--IMPORTANT JOIN-->
     <div class="container mt-5">
-        <h1 class="text-center text-dark display-3">{{ title }}</h1>
-        <p class="card-text text-center">created by {{ name }}</p>
+        <h1 class="text-center text-dark display-3">{{ data.title }}</h1>
+        <p class="card-text text-center">created by {{ data.name }}</p>
     </div>
 
-    <!--<div class="container mt-5">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-5 shadow p-3 mb-5 bg-white rounded">
                 <form>
@@ -29,7 +29,7 @@
                 </form>
             </div>
         </div>
-    </div>-->
+    </div>
     {{>footer}} <!--IMPORTANT JOIN-->
     <!--<script src="/js/app.js"></script>-->
 </body>

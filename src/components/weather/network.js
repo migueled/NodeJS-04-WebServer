@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+/*Files /Weather*/
+const geoCode = require( '../../services/geocode' );
+const forecast = require( '../../services/forecast' );
+
 router.get( '/' , ( req , res ) => {
     if( !req.query.address ) {
         return res.send({

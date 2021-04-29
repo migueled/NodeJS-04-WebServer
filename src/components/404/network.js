@@ -7,7 +7,7 @@ router.get( '/' , ( req , res ) => {
         title : '404',
         name : 'Miguel Eduardo'
     };
-    response.error( res ,'404'  ,'Page not found' , 500 , data , 'Error to search page' )
+    response.error( res , '404'  ,'Page not found' , 500 , data , 'Error to search page' )
 })
 
 module.exports = router

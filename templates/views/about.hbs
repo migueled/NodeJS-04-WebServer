@@ -12,8 +12,8 @@
 <body>
     {{>header}} <!--IMPORTANT JOIN-->
     <div class="container text-center mt-5">
-        <h1 class="text-center text-dark display-3">{{ title }}</h1>
-        <p class="card-text text-center">This site was created by {{ name }}. It uses data from mapbox and weather stack.</p>
+        <h1 class="text-center text-dark display-3">{{ data.title }}</h1>
+        <p class="card-text text-center">This site was created by {{ data.name }}. It uses data from mapbox and weather stack.</p>
         <img src="/img/robot.jpg" alt="Profile" class="mt-3 rounded">
     </div>
     {{>footer}} <!--IMPORTANT JOIN-->

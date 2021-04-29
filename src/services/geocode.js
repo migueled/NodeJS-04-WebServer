@@ -1,6 +1,6 @@
 const request = require( 'request' )
 //---KEYS
-const key = require( '../../config' )
+const key = require( '../config' )
 
 const geoCode = ( address , callback ) => {
     const urlMapBox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ encodeURIComponent( address ) }.json?access_token=${ key.keyMapBox() }&limit=5`;
@@ -11,11 +11,15 @@ const geoCode = ( address , callback ) => {
         } else if( body.message ) {
             callback( 'Not Found location' , undefined )
         } else {
-            callback( undefined , {
-                latitude : body.features[0].center[1],
-                longitude: body.features[0].center[0],
-                location : body.features[0].place_name
-            } )
+            if( body.features ){
+                callback( 'Not Found location' , undefined )
+            } else {
+                callback( undefined , {
+                    latitude : body.features[0].center[1],
+                    longitude: body.features[0].center[0],
+                    location : body.features[0].place_name
+                })
+            }
         }
     })
 }
