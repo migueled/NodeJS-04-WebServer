@@ -1,12 +1,13 @@
-const express = require('express');
-const router = express.Router();
+const express  = require( 'express' )
+const router   = express.Router()
+const response = require( '../../network/response' )
 
 router.get( '/' , ( req , res ) => {
-    res.render( '404' , {
-        errorMessage : 'Page not found',
+    const data = {
         title : '404',
-        name : 'Miguel Ed'
-      })
+        name : 'Miguel Eduardo'
+    };
+    response.error( res ,'404'  ,'Page not found' , 500 , data , 'Error to search page' )
 })
 
 module.exports = router
