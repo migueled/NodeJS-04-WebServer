@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-router.post( '/' , ( req , res ) => {
+router.get( '/' , ( req , res ) => {
     res.render( 'help' , {
         helpText : 'This is some helpful text.',
         title : 'Help me',
-        name  : 'Eduardo'
+        name  : 'Miguel Eduardo'
     })
 })
 
-router.post( '/help/*' , ( req , res ) => {
+router.get( '/*' , ( req , res ) => {
     res.render( '404' , {
         errorMessage : 'Help article not found',
         title : '404',
-        name : 'Miguel ED'
+        name : 'Miguel Eduardo'
     })
 })
 

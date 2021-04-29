@@ -2,7 +2,7 @@ const express = require( 'express' )
 const path    = require( 'path' )
 const hbs     = require( 'hbs' )
 
-const path = ( server ) => {
+const pathSetup = ( server ) => {
     /*Define paths for express config*/
     const publicDirectoryPath = path.join( __dirname , '../public' )
     const viewsPath           = path.join( __dirname ,  '../templates/views' )
@@ -17,4 +17,4 @@ const path = ( server ) => {
     server.use( express.static( publicDirectoryPath ) )
 }
 
-module.exports = path;
+module.exports = pathSetup;

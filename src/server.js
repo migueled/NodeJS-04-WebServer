@@ -3,10 +3,10 @@ const server  = express()
 
 /*Files /Weather*/
 const router = require( './network/routes' )
-const path   = require( './path' )
+const pathSetup   = require( './path' )
 
 /*PATH SETUP*/
-path( server )
+pathSetup( server )
 
 /*ROUTES*/
 router( server )

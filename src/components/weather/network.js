@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post( '/' , ( req , res ) => {
+router.get( '/' , ( req , res ) => {
     if( !req.query.address ) {
         return res.send({
             error : 'You must provide an address'
