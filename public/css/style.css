@@ -7,7 +7,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
-    background-color: #343a40  !important;
+    background-color: #ffffff  !important;
   }

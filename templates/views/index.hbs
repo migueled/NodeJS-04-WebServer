@@ -11,22 +11,21 @@
 </head>
 <body>
     {{>header}} <!--IMPORTANT JOIN-->
-    <div class="container">
-        <h1 class="text-center text-primary">{{ title }}</h1>
+    <div class="container mt-5">
+        <h1 class="text-center text-dark display-3">{{ title }}</h1>
         <p class="card-text text-center">created by {{ name }}</p>
     </div>
 
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 shadow p-3 mb-5 bg-white rounded">
+        <div class="row justify-content-center">
+            <div class="col-5 shadow p-3 mb-5 bg-white rounded">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="text" class="form-control">
+                        <label for="exampleInputEmail1">Location</label>
+                        <input type="text" class="form-control" placeholder="Write the location to search">
                     </div>
-                    <p id="message-2"></p>
-                    <p></p>
-                    <button class="btn btn-primary btn-lg btn-block">Enter</button>
+                    <p id="message-1"></p>
+                    <button class="btn btn-secondary btn-lg btn-block">Search</button>
                 </form>
             </div>
         </div>
