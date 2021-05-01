@@ -1,34 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-/*Files /Weather*/
-const geoCode = require( '../../services/geocode' );
-const forecast = require( '../../services/forecast' );
+const response = require( '../../network/response' )
+const controller = require('./controller');
 
 router.get( '/' , ( req , res ) => {
     if( !req.query.address ) {
-        return res.send({
-            error : 'You must provide an address'
-        })
+        response.errorRes( res ,'You must provide an address' , 500 , 'No Address' )
     }
     const address = req.query.address;
 
     if( address ) {
-        geoCode( address , ( error , { latitude , longitude , location } = {} ) => {
-            if ( error ) { 
-                return res.send( { error } )
-            }
-            forecast( longitude , latitude , ( error , dataForeCast ) => {
-                if ( error ) { 
-                    return res.send( { error } )
-                }
-                return res.send({
-                    forecast : dataForeCast,
-                    location,
-                    address : req.query.address
-                })
-            })
-        })
+        controller.weather( address , res );
     }
 })
 

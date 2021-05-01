@@ -8,18 +8,16 @@ const geoCode = ( address , callback ) => {
     request({ url : urlMapBox , json : true } , ( error , { body } ) => {
         if( error ) {
             callback( 'Unable to connect to weather service' ,undefined )
-        } else if( body.message ) {
+        } else if ( body.message ) {
             callback( 'Not Found location' , undefined )
-        } else {
-            if( body.features ){
+        } else if ( body.features.length === 0 ){
                 callback( 'Not Found location' , undefined )
-            } else {
-                callback( undefined , {
-                    latitude : body.features[0].center[1],
-                    longitude: body.features[0].center[0],
-                    location : body.features[0].place_name
-                })
-            }
+        } else {
+            callback( undefined , {
+                latitude : body.features[0].center[1],
+                longitude: body.features[0].center[0],
+                location : body.features[0].place_name
+            })
         }
     })
 }
