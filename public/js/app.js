@@ -19,7 +19,8 @@ const getData = ( location ) => {
             if( data.error ){
                 messageSecond.textContent = 'Try again later';
             } else {
-                messageSecond.textContent = `${ data.location }, Feelslike: ${ data.forecast.feelslike }, Temperature: ${ data.forecast.temperature }, Weather Description: ${ data.forecast.weather_descriptions }`;
+                console.log( data );
+                messageSecond.textContent = `${ data.data.location }, Feelslike: ${ data.data.forecast.feelslike }, Temperature: ${ data.data.forecast.temperature }, Weather Description: ${ data.data.forecast.weather_descriptions }`;
             }
         })
     })
