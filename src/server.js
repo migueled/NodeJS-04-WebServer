@@ -1,9 +1,10 @@
 const express = require( 'express' )
 const server  = express()
 
-/*Files /Weather*/
+/*FILES*/
 const router = require( './network/routes' )
 const pathSetup   = require( './path' )
+const config = require( './config' )
 
 /*PATH SETUP*/
 pathSetup( server )
@@ -12,6 +13,6 @@ pathSetup( server )
 router( server )
 
 /*this starts up this server port => 3000*/
-server.listen( 3000 , () => {
-    console.log( `Server is up on port 3000` ) // This message is never going to display to someone int the browser
+server.listen( config.port , () => {
+    console.log( `Server is up on ${ config.host }/${ config.port }` ) // This message is never going to display to someone int the browser
 })

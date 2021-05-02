@@ -1,9 +1,9 @@
 const request = require( 'request' )
 //---KEYS
-const key = require( '../config' )
+const config = require( '../config' )
 
 const geoCode = ( address , callback ) => {
-    const urlMapBox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ encodeURIComponent( address ) }.json?access_token=${ key.keyMapBox() }&limit=5`;
+    const urlMapBox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ encodeURIComponent( address ) }.json?access_token=${ config.keyMapBox }&limit=5`;
 
     request({ url : urlMapBox , json : true } , ( error , { body } ) => {
         if( error ) {
